@@ -78,12 +78,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         sudo tar -cJf $GITHUB_WORKSPACE/release/portadesx-kde.tar.xz portadesx-kde
         echo "TIMESTAMP=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-        echo "SHA256=$(sha256sum $GITHUB_WORKSPACE/release/portadesx-kde.tar.xz | cut -d ' ' -f 1)" >> $GITHUB_ENV
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.6.2
-      with:
-         name: portadesx-kde
-         path: release/portadesx-kde.tar.xz      
+        echo "SHA256=$(sha256sum $GITHUB_WORKSPACE/release/portadesx-kde.tar.xz | cut -d ' ' -f 1)" >> $GITHUB_ENV     
     - name: Release it!
       uses: softprops/action-gh-release@v2
       with:
