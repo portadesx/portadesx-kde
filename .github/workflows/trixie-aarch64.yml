@@ -49,7 +49,7 @@ jobs:
         sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "wget https://raw.githubusercontent.com/portadesx/portadesx-kde/refs/heads/main/scripts/portadesx-kde-help -P /usr/local/bin && chmod +x /usr/local/bin/portadesx-kde-help && portadesx-kde-help"
     - name: Install user apps
       run: | 
-        sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "apt update && apt install chromium firefox vlc thunderbird okular gwenview kcalc ark libheif1 webp-pixbuf-loader fonts-liberation p7zip -y && apt remove firefox-esr konqueror ksysguard plasma-discover partitionmanager kdeconnect termit kwalletmanager -y && apt autoremove && apt clean"
+        sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "apt update && apt install chromium firefox vlc thunderbird okular gwenview kcalc ark libheif1 webp-pixbuf-loader fonts-liberation p7zip -y && apt remove firefox-esr konqueror ksysguard plasma-discover partitionmanager kdeconnect termit kwalletmanager -y && apt autoremove -y && apt clean"
         sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "mkdir -p /home/portadesx/Desktop"
         # sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "mkdir -p /home/portadesx/.config/ && wget https://raw.githubusercontent.com/portadesx/portadesx/refs/heads/main/scripts/user-dirs.dirs -P /home/portadesx/.config/"
         sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "sudo sed -i 's|chromium --incognito %U|chromium --incognito --no-sandbox %U|' /usr/share/applications/chromium.desktop"
