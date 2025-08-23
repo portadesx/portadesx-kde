@@ -1,4 +1,4 @@
-name: noble-aarch64
+name: trixie-aarch64
 
 on:
   workflow_dispatch:
@@ -79,13 +79,18 @@ jobs:
         sudo tar -cJf $GITHUB_WORKSPACE/release/portadesx-kde.tar.xz portadesx-kde
         echo "TIMESTAMP=$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "SHA256=$(sha256sum $GITHUB_WORKSPACE/release/portadesx-kde.tar.xz | cut -d ' ' -f 1)" >> $GITHUB_ENV
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.6.2
+      with:
+         name: portadesx-kde
+         path: release/portadesx-kde.tar.xz      
     - name: Release it!
       uses: softprops/action-gh-release@v2
       with:
-          tag_name: noble-aarch64
-          name: 24.04 aarch64
+          tag_name: trixie-aarch64
+          name: Trixie aarch64
           body: |
-            Based on Ubuntu 24.04 LTS
+            Based on Debian 13 Trixie
             SHA-256: `${{ env.SHA256 }}`
           draft: false
           prerelease: false
