@@ -31,7 +31,7 @@ jobs:
         sudo mount --bind /dev/pts $GITHUB_WORKSPACE/portadesx-kde/dev/pts
     - name: Add mozilla repository
       run: |
-        sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "apt update && apt install wget sudo && wget https://raw.githubusercontent.com/portadesx/portadesx-kde/refs/heads/main/scripts/mozillarepo.sh && sh mozillarepo.sh && rm mozillarepo.sh"
+        sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "apt update && apt install wget sudo -y && wget https://raw.githubusercontent.com/portadesx/portadesx-kde/refs/heads/main/scripts/mozillarepo.sh && sh mozillarepo.sh && rm mozillarepo.sh"
     - name: Install LXQt desktop, VNC, and basic utility
       run: |
         sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "apt update && apt upgrade -y && apt install kde-desktop-environment dbus-x11 pulseaudio nano wget curl sudo adduser pavucontrol-qt tigervnc-standalone-server -y && apt clean"
