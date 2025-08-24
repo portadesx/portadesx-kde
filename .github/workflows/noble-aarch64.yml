@@ -86,7 +86,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
           tag_name: noble-aarch64
-          name: Noble aarch64
+          name: 24.04 aarch64
           body: |
             Based on Ubuntu 24.04
             SHA-256: `${{ env.SHA256 }}`
