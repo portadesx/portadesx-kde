@@ -31,7 +31,7 @@ jobs:
         sudo mount --bind /dev/pts $GITHUB_WORKSPACE/portadesx-kde/dev/pts
     - name: Remove snap override on apt
       run: |
-        sudo chroot $GITHUB_WORKSPACE/portadesx-cinnamon /bin/bash -c "apt update && apt install wget sudo && wget https://raw.githubusercontent.com/arfshl/no-snap-on-apt/refs/heads/main/Noble/arm64/setup.sh && sh setup.sh && rm setup.sh"
+        sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "apt update && apt install wget sudo && wget https://raw.githubusercontent.com/arfshl/no-snap-on-apt/refs/heads/main/Noble/arm64/setup.sh && sh setup.sh && rm setup.sh"
     - name: Install and configure KDE Plasma desktop, VNC, and basic utility
       run: |
         sudo chroot $GITHUB_WORKSPACE/portadesx-kde /bin/bash -c "apt update && apt upgrade -y && apt install kde-plasma-desktop kubuntu-settings-desktop kubuntu-wallpapers libkubuntu1 dbus-x11 pulseaudio nano wget curl sudo adduser pavucontrol-qt tigervnc-standalone-server -y && apt clean"
